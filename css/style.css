@@ -1,0 +1,1834 @@
+/* ==========================================================================
+   SWARAJ DATES™ – The Satyagraha Dating Bureau
+   Aesthetic: Vintage Administrative Office × Dating App Interface
+   ========================================================================== */
+
+:root {
+    --paper-bg: #f9f4e8;
+    --paper-card: #fdfbf7;
+    --paper-alt: #f1ebd8;
+    --ink-black: #1f1b16;
+    --ink-muted: #574e44;
+    --saffron: #df7212;
+    --saffron-light: #fff2e0;
+    --deep-green: #1b4d24;
+    --deep-green-dark: #123318;
+    --green-light: #eaf5ed;
+    --red-stamp: #9e2a1b;
+    --red-stamp-light: #fbeee9;
+    --border-sepia: #c8bca6;
+    --border-dark: #6e6353;
+    --gold: #c29528;
+    --shadow-soft: 0 4px 12px rgba(40, 30, 20, 0.08);
+    --shadow-deep: 0 8px 24px rgba(40, 30, 20, 0.15);
+}
+
+/* Base reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--paper-bg);
+    color: var(--ink-black);
+    font-family: "Georgia", "Times New Roman", "Palatino", serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: 
+        radial-gradient(#e6decb 1px, transparent 1px),
+        radial-gradient(#e6decb 1px, var(--paper-bg) 1px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+}
+
+/* Accessibility focus styles */
+:focus-visible {
+    outline: 3px solid var(--saffron);
+    outline-offset: 2px;
+}
+
+/* Swaraj Vision Easter Egg Mode */
+body.swaraj-vision-mode {
+    filter: sepia(0.35) contrast(1.1);
+    background-color: #f7eed7;
+}
+
+/* ==========================================================================
+   Toast Notification Shelf
+   ========================================================================== */
+.toast-shelf {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+    max-width: 360px;
+    pointer-events: none;
+}
+
+.bureau-toast {
+    background: var(--paper-card);
+    border: 2px solid var(--border-dark);
+    box-shadow: var(--shadow-deep);
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--ink-black);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.3s ease;
+    pointer-events: auto;
+}
+
+.bureau-toast.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-stamp {
+    background: var(--red-stamp);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: monospace;
+}
+
+/* ==========================================================================
+   Mercy Rule Banner
+   ========================================================================== */
+.mercy-banner {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffe8a1 100%);
+    border-bottom: 3px solid var(--gold);
+    color: #664d03;
+    padding: 10px 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+}
+
+.mercy-content {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.mercy-icon {
+    font-size: 1.8rem;
+}
+
+.mercy-claim-btn {
+    background: var(--deep-green);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   Header & Progress Bar
+   ========================================================================== */
+.bureau-header {
+    background: var(--paper-card);
+    border-bottom: 2px solid var(--border-dark);
+    padding: 20px 24px 0 24px;
+    box-shadow: var(--shadow-soft);
+}
+
+.header-seal-row {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 16px;
+}
+
+.glasses-logo {
+    width: 90px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.glasses-logo:hover {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+.glasses-svg {
+    width: 100%;
+    height: auto;
+}
+
+.glass-lens {
+    fill: #ffffff;
+    stroke: var(--ink-black);
+    stroke-width: 3.5;
+}
+
+.glass-bridge, .glass-arm {
+    stroke: var(--ink-black);
+    stroke-width: 3;
+    fill: none;
+}
+
+.header-titles {
+    text-align: center;
+    flex: 1;
+}
+
+.govt-sublabel {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--ink-muted);
+    font-family: monospace;
+    margin-bottom: 4px;
+}
+
+.main-title {
+    font-size: 2.2rem;
+    color: var(--deep-green);
+    letter-spacing: 1px;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.sub-title {
+    font-size: 1.1rem;
+    color: var(--saffron);
+    font-weight: normal;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.tagline {
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+    margin-top: 6px;
+}
+
+.rubber-stamp {
+    border: 2px dashed var(--red-stamp);
+    color: var(--red-stamp);
+    padding: 8px 12px;
+    text-align: center;
+    transform: rotate(4deg);
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+    line-height: 1.2;
+    border-radius: 4px;
+    background: var(--red-stamp-light);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Progress bar */
+.bureau-progress-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    margin: 16px auto 0 auto;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    gap: 8px;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: var(--paper-alt);
+    border: 1px solid var(--border-sepia);
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.progress-step .step-num {
+    background: var(--border-dark);
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.progress-step.active {
+    background: var(--saffron-light);
+    border-color: var(--saffron);
+    color: var(--saffron);
+    font-weight: bold;
+}
+
+.progress-step.active .step-num {
+    background: var(--saffron);
+}
+
+.progress-step.completed {
+    background: var(--green-light);
+    border-color: var(--deep-green);
+    color: var(--deep-green);
+}
+
+.progress-step.completed .step-num {
+    background: var(--deep-green);
+}
+
+/* ==========================================================================
+   Main Layout & File Folder Design
+   ========================================================================== */
+.main-layout {
+    flex: 1;
+    max-width: 980px;
+    width: 100%;
+    margin: 30px auto;
+    padding: 0 16px;
+}
+
+.stage-panel {
+    animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.file-folder {
+    background: var(--paper-card);
+    border: 2px solid var(--border-dark);
+    border-radius: 2px 10px 10px 10px;
+    box-shadow: var(--shadow-deep);
+    position: relative;
+    padding: 30px 24px;
+}
+
+.file-tab {
+    position: absolute;
+    top: -24px;
+    left: -2px;
+    background: var(--border-dark);
+    color: #fff;
+    font-family: monospace;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 14px;
+    border-radius: 4px 8px 0 0;
+    letter-spacing: 1px;
+}
+
+.bureau-heading {
+    font-size: 1.6rem;
+    color: var(--deep-green);
+    margin-bottom: 6px;
+}
+
+.bureau-sub {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    font-style: italic;
+    margin-bottom: 24px;
+}
+
+/* Bureau Buttons */
+.bureau-btn {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid var(--border-dark);
+    background: var(--paper-alt);
+    color: var(--ink-black);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 2px 2px 0 var(--border-dark);
+}
+
+.bureau-btn:hover:not(:disabled) {
+    background: #e4dac2;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--border-dark);
+}
+
+.bureau-btn:active:not(:disabled) {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--border-dark);
+}
+
+.bureau-btn.primary-btn {
+    background: var(--deep-green);
+    color: #fff;
+    border-color: var(--deep-green-dark);
+}
+
+.bureau-btn.primary-btn:hover:not(:disabled) {
+    background: #256631;
+}
+
+.bureau-btn.disabled, .bureau-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 1px 1px 0 var(--border-dark);
+}
+
+.mini-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+.bureau-input {
+    font-family: monospace;
+    padding: 10px 14px;
+    border: 2px solid var(--border-dark);
+    background: #fff;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    width: 100%;
+    color: var(--ink-black);
+}
+
+.bureau-select {
+    font-family: inherit;
+    padding: 8px 12px;
+    border: 2px solid var(--border-dark);
+    background: #fff;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   STAGE 1: Terms & Conditions Box
+   ========================================================================== */
+.terms-container {
+    background: var(--paper-alt);
+    border: 2px solid var(--border-sepia);
+    padding: 16px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.terms-scroll-box {
+    background: #fff;
+    border: 1px solid var(--border-sepia);
+    height: 250px;
+    overflow-y: scroll;
+    padding: 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    position: relative;
+}
+
+.terms-watermark {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: rgba(200, 188, 166, 0.25);
+    transform: rotate(-25deg);
+    pointer-events: none;
+    font-family: monospace;
+}
+
+.terms-scroll-box h3 {
+    color: var(--red-stamp);
+    font-size: 1rem;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed var(--border-sepia);
+    padding-bottom: 6px;
+}
+
+.terms-lead {
+    font-style: italic;
+    margin-bottom: 14px;
+}
+
+.terms-list {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.terms-footer-seal {
+    margin-top: 20px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+}
+
+.scroll-notice {
+    font-size: 0.85rem;
+    color: var(--red-stamp);
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.action-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   STAGE 2: Satya CAPTCHA
+   ========================================================================== */
+.captcha-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.question-card, .oath-card {
+    background: #fff;
+    border: 2px solid var(--border-sepia);
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.question-label {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--saffron);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.question-title {
+    font-size: 1.3rem;
+    color: var(--deep-green);
+    margin: 8px 0 16px 0;
+}
+
+.button-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.feedback-card {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: var(--saffron-light);
+    border-left: 4px solid var(--saffron);
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.oath-prompt {
+    font-size: 1rem;
+    margin: 8px 0 16px 0;
+}
+
+.oath-input-row {
+    display: flex;
+    gap: 12px;
+}
+
+.oath-progress {
+    margin-top: 10px;
+    font-family: monospace;
+    font-weight: bold;
+    color: var(--deep-green);
+}
+
+/* ==========================================================================
+   STAGE 3: Main Calendar Picker & Charkha
+   ========================================================================== */
+.calendar-hero-header {
+    text-align: center;
+    margin-bottom: 24px;
+    border-bottom: 2px dashed var(--border-sepia);
+    padding-bottom: 16px;
+}
+
+.match-heading {
+    font-size: 2.4rem;
+    color: var(--deep-green);
+    letter-spacing: 2px;
+}
+
+.match-sub {
+    font-size: 1.1rem;
+    color: var(--saffron);
+    font-style: italic;
+}
+
+.match-notice {
+    display: inline-block;
+    background: var(--saffron-light);
+    border: 1px dashed var(--saffron);
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-family: monospace;
+    margin-top: 8px;
+    border-radius: 4px;
+}
+
+.dating-badge-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--paper-alt);
+    border: 1px solid var(--border-sepia);
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.badge-tag {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--deep-green);
+    font-family: monospace;
+}
+
+.badge-expiry {
+    font-size: 0.85rem;
+    color: var(--red-stamp);
+}
+
+/* Dating Profile Card */
+.dating-profile-card {
+    background: #fff;
+    border: 3px solid var(--border-dark);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-deep);
+    position: relative;
+    background-image: linear-gradient(to bottom, #fffdf8, #fff);
+}
+
+.profile-header-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.verified-pill {
+    background: var(--green-light);
+    color: var(--deep-green);
+    border: 1px solid var(--deep-green);
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    font-family: monospace;
+    border-radius: 12px;
+}
+
+.compatibility-pill {
+    background: var(--saffron-light);
+    color: var(--saffron);
+    border: 1px solid var(--saffron);
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    font-family: monospace;
+    border-radius: 12px;
+}
+
+.profile-body-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.profile-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--paper-alt);
+    border: 2px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.profile-details {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 1.6rem;
+    color: var(--deep-green);
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.profile-location {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    font-family: monospace;
+    margin: 4px 0 6px 0;
+}
+
+.profile-bio {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--ink-black);
+    font-style: italic;
+}
+
+.dating-swipe-controls {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.swipe-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: 2px solid var(--border-dark);
+}
+
+.swipe-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.swipe-left {
+    background: #fff0f0;
+    color: var(--red-stamp);
+    border-color: var(--red-stamp);
+}
+
+.swipe-right {
+    background: var(--deep-green);
+    color: #fff;
+    border-color: var(--deep-green-dark);
+}
+
+.swipe-super {
+    background: #fff8e6;
+    color: var(--saffron);
+    border-color: var(--saffron);
+}
+
+.selected-hero-box {
+    background: #fff;
+    border: 3px double var(--deep-green);
+    padding: 20px;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-soft);
+}
+
+.hero-label {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    letter-spacing: 2px;
+}
+
+.hero-date {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--deep-green);
+    margin: 6px 0;
+}
+
+.easter-egg-tag {
+    background: var(--green-light);
+    color: var(--deep-green);
+    border: 1px solid var(--deep-green);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 6px;
+    animation: bounce 0.4s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+.like-counter {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    font-style: italic;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.section-title h3 {
+    font-size: 1.15rem;
+    color: var(--ink-black);
+}
+
+.section-desc {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    font-style: italic;
+    margin-bottom: 14px;
+}
+
+/* Charkha Wheel Section */
+.charkha-section {
+    background: var(--paper-alt);
+    border: 2px solid var(--border-sepia);
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+.charkha-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 16px 0;
+}
+
+.charkha-pointer {
+    font-size: 1.6rem;
+    color: var(--red-stamp);
+    position: relative;
+    z-index: 10;
+    margin-bottom: -10px;
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.charkha-wrapper {
+    width: 250px;
+    height: 250px;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    background: #fff;
+    user-select: none;
+}
+
+.charkha-svg {
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+}
+
+.charkha-rim {
+    fill: #f5eedc;
+    stroke: var(--border-dark);
+    stroke-width: 4;
+}
+
+.charkha-inner-rim {
+    fill: none;
+    stroke: var(--saffron);
+    stroke-width: 2;
+    stroke-dasharray: 4, 4;
+}
+
+.charkha-spoke {
+    stroke: var(--deep-green);
+    stroke-width: 2;
+}
+
+.charkha-month-text {
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: bold;
+    fill: var(--ink-black);
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.charkha-hub {
+    fill: var(--saffron);
+    stroke: var(--border-dark);
+    stroke-width: 3;
+}
+
+.charkha-axle {
+    fill: var(--deep-green);
+}
+
+.charkha-crank {
+    stroke: var(--border-dark);
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+.charkha-crank-handle {
+    fill: var(--red-stamp);
+}
+
+.charkha-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.spin-btn {
+    background: var(--saffron);
+    color: #fff;
+    border-color: #b85b08;
+    font-size: 1rem;
+    padding: 12px 24px;
+}
+
+.spin-btn:hover {
+    background: #c56307;
+}
+
+.month-nav-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.month-indicator {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--deep-green);
+    min-width: 110px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid var(--border-sepia);
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.sub-notice {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--ink-muted);
+}
+
+.fallback-row {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* Year Slider Section */
+.year-section {
+    background: #fff;
+    border: 2px solid var(--border-sepia);
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+.year-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.year-limit {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+}
+
+.bureau-slider {
+    flex: 1;
+    height: 4px; /* extremely thin */
+    background: var(--border-sepia);
+    outline: none;
+    cursor: pointer;
+    accent-color: var(--deep-green);
+}
+
+.year-display-badge {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: var(--deep-green);
+}
+
+/* Dandi March Day Selector Section */
+.dandi-section {
+    background: var(--paper-alt);
+    border: 2px solid var(--border-sepia);
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.dandi-giant-btn {
+    font-family: inherit;
+    font-size: 1.15rem;
+    font-weight: 900;
+    padding: 16px 28px;
+    background: var(--deep-green);
+    color: #fff;
+    border: 3px solid var(--deep-green-dark);
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(27, 77, 36, 0.3);
+    transition: transform 0.15s ease, background 0.2s ease;
+    width: 100%;
+    max-width: 480px;
+}
+
+.dandi-giant-btn:hover {
+    background: #256631;
+    transform: translateY(-2px);
+}
+
+.dandi-giant-btn:active {
+    transform: translateY(1px);
+}
+
+.milestone-text {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.milestone-active {
+    color: var(--red-stamp);
+}
+
+.milestone-active.special {
+    color: var(--deep-green);
+    font-size: 1.1rem;
+}
+
+/* Calendar Grid Section */
+.grid-section {
+    background: #fff;
+    border: 2px solid var(--border-sepia);
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+.grid-header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.grid-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--deep-green);
+}
+
+.bureau-calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.bureau-calendar-table th {
+    background: var(--paper-alt);
+    color: var(--ink-black);
+    padding: 8px 4px;
+    border: 1px solid var(--border-sepia);
+    font-size: 0.85rem;
+    font-family: monospace;
+}
+
+.bureau-calendar-table td {
+    height: 44px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid var(--border-sepia);
+    font-size: 0.95rem;
+    font-family: monospace;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.bureau-calendar-table td.empty-day {
+    background: #fbf9f4;
+    cursor: default;
+}
+
+.bureau-calendar-table td.calendar-day-cell:hover {
+    background: var(--saffron-light);
+    color: var(--saffron);
+    font-weight: bold;
+}
+
+.bureau-calendar-table td.selected-day {
+    background: var(--deep-green) !important;
+    color: #fff !important;
+    font-weight: bold;
+    border-color: var(--deep-green-dark);
+}
+
+/* Manual Entry & Hinge Prompt */
+.manual-entry-section, .dating-prompt-card {
+    background: var(--paper-alt);
+    border: 2px solid var(--border-sepia);
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.manual-input-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.dating-prompt-card label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.prompt-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+}
+
+.dating-actions-row {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.super-like-btn {
+    background: #fff8e8;
+    color: var(--saffron);
+    border-color: var(--saffron);
+}
+
+/* ==========================================================================
+   STAGE 4: Round Table Conference & Non-Cooperation Button
+   ========================================================================== */
+.roundtable-hero {
+    background: var(--paper-alt);
+    border: 2px dashed var(--deep-green);
+    padding: 16px;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+.roundtable-label {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+}
+
+.roundtable-date {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--deep-green);
+    margin-top: 4px;
+}
+
+.committee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.committee-card {
+    background: #fff;
+    border: 2px solid var(--border-sepia);
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+}
+
+.member-avatar {
+    font-size: 2rem;
+    margin-bottom: 6px;
+}
+
+.committee-card h4 {
+    font-size: 1rem;
+    color: var(--deep-green);
+}
+
+.member-role {
+    display: block;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    margin-bottom: 10px;
+}
+
+.member-quote {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-black);
+    line-height: 1.4;
+    background: var(--paper-alt);
+    padding: 10px;
+    border-radius: 4px;
+    border-left: 3px solid var(--saffron);
+}
+
+/* Satyagraha Evasive Button Arena */
+.satyagraha-arena-wrapper {
+    background: #fff;
+    border: 2px solid var(--border-dark);
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.arena-tip {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--red-stamp);
+    margin-bottom: 12px;
+}
+
+.satyagraha-arena {
+    height: 180px;
+    position: relative;
+    border: 2px dashed var(--border-sepia);
+    background: var(--paper-alt);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.evasive-btn {
+    position: absolute;
+    top: 60px;
+    left: 40%;
+    z-index: 10;
+    transition: left 0.18s ease-out, top 0.18s ease-out, background 0.3s ease;
+}
+
+.evasive-btn.calm {
+    background: var(--gold) !important;
+    border-color: #795b0c !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(194, 149, 40, 0.6) !important;
+}
+
+.reconsider-row {
+    text-align: center;
+}
+
+.reconsider-btn {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    background: transparent;
+    border: 1px dashed var(--border-dark);
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   STAGE 5: Salt Tax
+   ========================================================================== */
+.salt-tax-station {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.salt-shaker-zone {
+    width: 140px;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.salt-shaker-svg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+}
+
+.shaker-body {
+    fill: #ffffff;
+    stroke: var(--border-dark);
+    stroke-width: 4;
+}
+
+.shaker-cap {
+    fill: #d6cfbe;
+    stroke: var(--border-dark);
+    stroke-width: 4;
+}
+
+.shaker-hole {
+    fill: var(--ink-black);
+}
+
+.shaker-label {
+    font-family: monospace;
+    font-size: 22px;
+    font-weight: 900;
+    fill: var(--deep-green);
+    text-anchor: middle;
+}
+
+.shaker-click-cue {
+    display: block;
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--deep-green);
+    margin-top: 8px;
+}
+
+.salt-shaker-zone.shaking {
+    animation: shake 0.35s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    20% { transform: translateY(-10px) rotate(-15deg); }
+    40% { transform: translateY(5px) rotate(10deg); }
+    60% { transform: translateY(-5px) rotate(-8deg); }
+    80% { transform: translateY(2px) rotate(5deg); }
+}
+
+.salt-grain {
+    position: absolute;
+    top: 10px;
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: 0 0 2px #444;
+    animation: fall 0.6s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(90px); }
+}
+
+.salt-tally-box {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    border: 2px solid var(--border-sepia);
+    padding: 16px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.tally-label {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+}
+
+.tally-count {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--deep-green);
+    margin: 4px 0;
+}
+
+.salt-meter-track {
+    width: 100%;
+    height: 12px;
+    background: var(--paper-alt);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-sepia);
+    margin: 10px 0;
+}
+
+.salt-meter-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--saffron);
+    transition: width 0.2s ease;
+}
+
+.salt-notice {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--ink-muted);
+}
+
+.salt-success-notice {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--deep-green);
+}
+
+.salt-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.bypass-btn {
+    font-size: 0.85rem;
+    background: transparent;
+    border: 1px dashed var(--saffron);
+    color: var(--saffron);
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   STAGE 6: Final Sanction Certificate
+   ========================================================================== */
+.certificate-wrapper {
+    position: relative;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.certificate-border-outer {
+    background: #fffcf5;
+    border: 6px double var(--deep-green);
+    padding: 10px;
+    box-shadow: var(--shadow-deep);
+}
+
+.certificate-border-inner {
+    border: 2px solid var(--gold);
+    padding: 30px 24px;
+    text-align: center;
+    position: relative;
+}
+
+.cert-emblem {
+    font-size: 2.6rem;
+    margin-bottom: 6px;
+}
+
+.cert-header h3 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--deep-green);
+}
+
+.cert-header h4 {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: var(--saffron);
+    margin: 4px 0;
+}
+
+.cert-subtitle {
+    font-style: italic;
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.cert-text-lead {
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    line-height: 1.6;
+}
+
+.cert-date-banner {
+    background: var(--green-light);
+    border: 2px solid var(--deep-green);
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+.cert-badge {
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--deep-green);
+    font-weight: bold;
+}
+
+.cert-date-title {
+    font-size: 2.5rem;
+    color: var(--deep-green);
+    font-weight: 900;
+}
+
+.cert-easter-notice {
+    margin-top: 8px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--saffron);
+}
+
+.cert-metadata-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 30px;
+    border-top: 1px dashed var(--border-sepia);
+    border-bottom: 1px dashed var(--border-sepia);
+    padding: 16px 0;
+}
+
+.cert-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.meta-label {
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: var(--ink-muted);
+}
+
+.status-approved {
+    color: var(--deep-green);
+}
+
+.cert-endorsement-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.official-rubber-seal {
+    width: 120px;
+    height: 120px;
+    border: 3px dashed var(--red-stamp);
+    border-radius: 50%;
+    color: var(--red-stamp);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-weight: 900;
+    transform: rotate(-10deg);
+    line-height: 1.2;
+    padding: 8px;
+}
+
+.seal-text-top { font-size: 0.7rem; }
+.seal-text-mid { font-size: 0.85rem; border-top: 1px solid var(--red-stamp); border-bottom: 1px solid var(--red-stamp); padding: 2px 0; }
+.seal-text-bot { font-size: 0.6rem; }
+
+.signature-box {
+    text-align: center;
+}
+
+.fake-signature {
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+    font-size: 2.2rem;
+    color: #1a2a4b;
+    border-bottom: 1px solid var(--ink-black);
+    padding-bottom: 4px;
+}
+
+.sign-title {
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: var(--ink-muted);
+}
+
+.cert-actions-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Confetti pieces */
+.confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    top: -20px;
+    animation: confettiFall 3s linear infinite;
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(600px) rotate(720deg); opacity: 0; }
+}
+
+/* ==========================================================================
+   Footer & Modals
+   ========================================================================== */
+.bureau-footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-sepia);
+    background: var(--paper-card);
+    margin-top: 40px;
+}
+
+.footer-links {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-links a, .quit-link-btn {
+    color: var(--ink-muted);
+    text-decoration: underline;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.quit-link-btn:hover, .footer-links a:hover {
+    color: var(--red-stamp);
+}
+
+/* Modals */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(31, 27, 22, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 16px;
+}
+
+.modal-card {
+    background: var(--paper-card);
+    border: 3px solid var(--border-dark);
+    max-width: 500px;
+    width: 100%;
+    padding: 24px;
+    border-radius: 6px;
+    position: relative;
+    box-shadow: var(--shadow-deep);
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--ink-muted);
+}
+
+.modal-stamp {
+    font-family: monospace;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--red-stamp);
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.clues-list {
+    margin-top: 14px;
+    padding-left: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Quit India Full Overlay */
+.quit-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    color: #eee;
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.quit-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.quit-card {
+    max-width: 480px;
+}
+
+.charkha-silhouette {
+    font-size: 4rem;
+    margin-bottom: 16px;
+}
+
+.quit-card h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: var(--saffron);
+}
+
+.quit-card p {
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+    color: #bbb;
+}
+
+/* Hidden Utility */
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Print Stylesheet
+   ========================================================================== */
+@media print {
+    body {
+        background: #fff !important;
+        background-image: none !important;
+        color: #000 !important;
+    }
+
+    .bureau-header, .bureau-progress-bar, .toast-shelf, .bureau-footer,
+    #mercy-banner, .cert-actions-row, #stage-1, #stage-2, #stage-3, #stage-4, #stage-5 {
+        display: none !important;
+    }
+
+    #stage-6 {
+        display: block !important;
+    }
+
+    .certificate-border-outer {
+        border: 4px double #000 !important;
+        box-shadow: none !important;
+    }
+
+    .certificate-border-inner {
+        border: 1px solid #000 !important;
+    }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 768px) {
+    .header-seal-row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .rubber-stamp.header-stamp {
+        display: none;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-date {
+        font-size: 1.7rem;
+    }
+
+    .charkha-wrapper {
+        width: 210px;
+        height: 210px;
+    }
+
+    .oath-input-row, .manual-input-row {
+        flex-direction: column;
+    }
+
+    .cert-endorsement-row {
+        flex-direction: column;
+    }
+}

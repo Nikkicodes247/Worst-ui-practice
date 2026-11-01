@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWARAJ DATES™ – The Satyagraha Dating Bureau</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-shelf" aria-live="polite"></div>
+
+    <!-- Mercy Rule Banner -->
+    <div id="mercy-banner" class="mercy-banner hidden" role="alert">
+        <div class="mercy-content">
+            <span class="mercy-icon">🕊️</span>
+            <div>
+                <strong>BAPU TAKES PITY — COMPLETE YOUR APPLICATION.</strong>
+                <p>You have demonstrated superhuman bureaucratic fortitude. Click here for instant sanction!</p>
+            </div>
+            <button type="button" class="mercy-claim-btn">CLAIM INSTANT SANCTION</button>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="bureau-header">
+        <div class="header-seal-row">
+            <div id="bapu-glasses-logo" class="glasses-logo" role="button" tabindex="0" title="Departmental Spectacles (Click 5 times for Swaraj Vision)">
+                <svg viewBox="0 0 120 50" class="glasses-svg">
+                    <circle cx="32" cy="25" r="18" class="glass-lens" />
+                    <circle cx="88" cy="25" r="18" class="glass-lens" />
+                    <path d="M 50 22 Q 60 14 70 22" class="glass-bridge" />
+                    <line x1="14" y1="25" x2="2" y2="21" class="glass-arm" />
+                    <line x1="106" y1="25" x2="118" y2="21" class="glass-arm" />
+                </svg>
+            </div>
+            <div class="header-titles">
+                <span class="govt-sublabel">GOVERNMENT OF CHRONOLOGICAL INDEPENDENCE</span>
+                <h1 class="main-title">SWARAJ DATES™</h1>
+                <h2 class="sub-title">The Satyagraha Dating Bureau</h2>
+                <p class="tagline">"Find Your Perfect Date. Independence was easier."</p>
+            </div>
+            <div class="rubber-stamp header-stamp">
+                <span>SEAL OF RED TAPE</span>
+                <small>ESTD 1947</small>
+            </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <nav class="bureau-progress-bar" aria-label="Administrative Progress">
+            <div class="progress-step active" data-step="1">
+                <span class="step-num">1</span>
+                <span class="step-label">Terms of Raj</span>
+            </div>
+            <div class="progress-step" data-step="2">
+                <span class="step-num">2</span>
+                <span class="step-label">Satya CAPTCHA</span>
+            </div>
+            <div class="progress-step" data-step="3">
+                <span class="step-num">3</span>
+                <span class="step-label">Swaraj Calendar</span>
+            </div>
+            <div class="progress-step" data-step="4">
+                <span class="step-num">4</span>
+                <span class="step-label">Round Table</span>
+            </div>
+            <div class="progress-step" data-step="5">
+                <span class="step-num">5</span>
+                <span class="step-label">Salt Tax</span>
+            </div>
+            <div class="progress-step" data-step="6">
+                <span class="step-num">6</span>
+                <span class="step-label">Final Sanction</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-layout">
+        <!-- STAGE 1: Terms and Conditions of the Raj -->
+        <section id="stage-1" class="stage-panel">
+            <div class="file-folder">
+                <div class="file-tab">FILE #1947/RAJ/DATE-01</div>
+                <div class="file-inner">
+                    <h2 class="bureau-heading">Welcome to the Department of Chronological Independence.</h2>
+                    <p class="bureau-sub">Before finding your perfect date, please obtain permission.</p>
+
+                    <div class="terms-container">
+                        <div id="terms-scroll-box" class="terms-scroll-box" tabindex="0" role="region" aria-label="Terms of the Raj scroll box">
+                            <div class="terms-watermark">CONFIDENTIAL MEMORANDUM</div>
+                            <h3>TERMS AND CONDITIONS OF THE CHRONOLOGICAL RAJ (EDITION 1947)</h3>
+                            <p class="terms-lead">Under Imperial Directive 42/B, no subject shall initiate, plan, or execute a romantic or chronological appointment without explicit tri-departmental endorsement.</p>
+                            <ol class="terms-list">
+                                <li><strong>Clause 1 (Tripartite Vetting):</strong> All calendar dates are provisional and subject to tripartite committee ratification.</li>
+                                <li><strong>Clause 2 (No Liability):</strong> The Department is not liable for emotionally, historically, or mathematically unsuitable dates.</li>
+                                <li><strong>Clause 3 (Parchment Protocol):</strong> Intention to date must be submitted in triplicate on 70 GSM handloom parchment.</li>
+                                <li><strong>Clause 4 (Patience Requirement):</strong> Calendar independence is a privilege granted solely upon demonstration of supreme patience.</li>
+                                <li><strong>Clause 5 (Leap Year Scrutiny):</strong> The applicant acknowledges that leap years require special permission from the Simon Commission.</li>
+                                <li><strong>Clause 6 (Round Table Dispute):</strong> Any romantic disappointment shall be deliberated at the forthcoming Round Table Conference.</li>
+                                <li><strong>Clause 7 (Sunday Requisitions):</strong> The Crown reserves the right to declare any Sunday a working day for date verification.</li>
+                                <li><strong>Clause 8 (Frivolous Swiping):</strong> Applicants who swipe right without due diligence will be fined two tolas of imaginary khadi.</li>
+                                <li><strong>Clause 9 (Waiver of Promptness):</strong> By scrolling to the end of this memorandum, you waive the right to prompt chronological satisfaction.</li>
+                            </ol>
+                            <p class="terms-footer-seal">[End of Memorandum • Department of Red Tape]</p>
+                        </div>
+                        <p id="terms-scroll-notice" class="scroll-notice">📜 You must inspect the entirety of bureaucratic terms before accepting. (Scroll to bottom)</p>
+                    </div>
+
+                    <div class="action-footer">
+                        <button type="button" id="accept-terms-btn" class="bureau-btn primary-btn">
+                            I ACCEPT THIS NONSENSE
+                        </button>
+                        <button type="button" class="bureau-btn bypass-btn" onclick="window.Flow.setStage(3)">
+                            ⚡ Fast-Track Clearance (Jump to Dating Calendar)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 2: Satya CAPTCHA -->
+        <section id="stage-2" class="stage-panel hidden">
+            <div class="file-folder">
+                <div class="file-tab">SATYA VERIFICATION #02</div>
+                <div class="file-inner">
+                    <h2 class="bureau-heading">PROVE YOUR TRUTHFULNESS.</h2>
+                    <p class="bureau-sub">The Department requires absolute moral alignment before chronological clearance.</p>
+
+                    <div class="captcha-box">
+                        <div class="question-card">
+                            <span class="question-label">INQUIRY #1:</span>
+                            <h3 class="question-title">Have you ever told a lie?</h3>
+                            <div class="button-row">
+                                <button type="button" id="captcha-lie-yes" class="bureau-btn answer-btn">YES (Truthful confession)</button>
+                                <button type="button" id="captcha-lie-no" class="bureau-btn answer-btn">NO (Ahimsa purist)</button>
+                            </div>
+                            <div id="captcha-lie-feedback" class="feedback-card hidden"></div>
+                        </div>
+
+                        <div id="captcha-oath-section" class="oath-card hidden">
+                            <span class="question-label">INQUIRY #2 — OATH OF BIRTHDAY:</span>
+                            <p class="oath-prompt">Repeat after the Committee (Type exactly: <em>"I swear I was born then."</em>):</p>
+                            <div class="oath-input-row">
+                                <input type="text" id="captcha-oath-input" placeholder="Type: I swear I was born then." class="bureau-input" autocomplete="off" />
+                                <button type="button" id="captcha-oath-submit" class="bureau-btn primary-btn">Submit Oath</button>
+                            </div>
+                            <div id="captcha-oath-counter" class="oath-progress">Oath recitation: 0 / 3 completed.</div>
+                            <button type="button" class="bureau-btn bypass-btn" style="margin-top: 14px;" onclick="window.Flow.setStage(3)">
+                                ⚡ Skip Oath (Direct to Dating Calendar)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 3: Swaraj Dating Calendar (Main Feature) -->
+        <section id="stage-3" class="stage-panel hidden">
+            <div class="file-folder calendar-stage-folder">
+                <div class="file-tab">CHRONOLOGICAL DISCOVERY #03</div>
+                <div class="file-inner">
+                    <div class="calendar-hero-header">
+                        <h2 class="match-heading">IT'S A MATCH!</h2>
+                        <p class="match-sub">Your perfect date awaits.</p>
+                        <span class="match-notice">Match pending: 3 forms and a salt tax.</span>
+                    </div>
+
+                    <!-- Datepicker Mount Container -->
+                    <div id="picker-stage-mount"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 4: Round Table Conference -->
+        <section id="stage-4" class="stage-panel hidden">
+            <div class="file-folder">
+                <div class="file-tab">DELEGATION SUMMONS #04</div>
+                <div class="file-inner">
+                    <h2 class="bureau-heading">THE ROUND TABLE CONFERENCE</h2>
+                    <p class="bureau-sub">Your selected date has been placed before the Chronological Advisory Delegation.</p>
+
+                    <div class="roundtable-hero">
+                        <span class="roundtable-label">APPLICATION UNDER DELIBERATION FOR:</span>
+                        <div id="roundtable-selected-date" class="roundtable-date">15 August 1947</div>
+                    </div>
+
+                    <div class="committee-grid">
+                        <div class="committee-card">
+                            <div class="member-avatar">🎩</div>
+                            <h4>Sir Archibald Clutterbuck</h4>
+                            <span class="member-role">Deputy Under-Secretary of Delays</span>
+                            <p class="member-quote">"This date seems mathematically plausible, which naturally arouses my deepest suspicions."</p>
+                        </div>
+                        <div class="committee-card">
+                            <div class="member-avatar">📜</div>
+                            <h4>Shri Manilal File-wala</h4>
+                            <span class="member-role">Keeper of the Red Tape</span>
+                            <p class="member-quote">"Objection! We lack Form 22-B in quad colour. I move for an adjournment till tea time."</p>
+                        </div>
+                        <div class="committee-card">
+                            <div class="member-avatar">🪶</div>
+                            <h4>Lady Penelope Pause</h4>
+                            <span class="member-role">Commissioner of Prolonged Deliberations</span>
+                            <p class="member-quote">"I propose a sub-committee to study the feasibility of forming an evaluation committee."</p>
+                        </div>
+                    </div>
+
+                    <!-- Evasive Non-Cooperation Button Arena -->
+                    <div class="satyagraha-arena-wrapper">
+                        <span class="arena-tip">⚠️ <em>Warning: The confirmation button practices active Non-Cooperation. Approach gently with supreme patience, or hold calmly for 3 seconds.</em></span>
+                        <div id="satyagraha-button-arena" class="satyagraha-arena">
+                            <button type="button" id="roundtable-confirm-btn" class="bureau-btn primary-btn evasive-btn">
+                                CONFIRM MY DATE
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="reconsider-row">
+                        <button type="button" id="roundtable-reconsider-btn" class="bureau-btn reconsider-btn">
+                            RECONSIDER MY LIFE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 5: Salt Tax -->
+        <section id="stage-5" class="stage-panel hidden">
+            <div class="file-folder">
+                <div class="file-tab">CUSTOMS LEVY #05</div>
+                <div class="file-inner">
+                    <h2 class="bureau-heading">YOUR DATE HAS BEEN APPROVED PROVISIONALLY.</h2>
+                    <p class="bureau-sub">Under Section 390 of the Chronological Salt Act, please pay 10 imaginary units of salt.</p>
+
+                    <div class="salt-tax-station">
+                        <div id="salt-shaker-zone" class="salt-shaker-zone" role="button" tabindex="0" title="Click to shake salt">
+                            <svg viewBox="0 0 160 220" class="salt-shaker-svg">
+                                <rect x="35" y="60" width="90" height="140" rx="16" class="shaker-body" />
+                                <rect x="45" y="25" width="70" height="40" rx="8" class="shaker-cap" />
+                                <circle cx="65" cy="40" r="4" class="shaker-hole" />
+                                <circle cx="80" cy="40" r="4" class="shaker-hole" />
+                                <circle cx="95" cy="40" r="4" class="shaker-hole" />
+                                <circle cx="72" cy="52" r="4" class="shaker-hole" />
+                                <circle cx="88" cy="52" r="4" class="shaker-hole" />
+                                <text x="80" y="140" class="shaker-label">SALT</text>
+                            </svg>
+                            <span class="shaker-click-cue">👆 CLICK SHAKER TO PAY LEVY</span>
+                        </div>
+
+                        <div class="salt-tally-box">
+                            <div class="tally-label">TAX PAYMENT PROGRESS:</div>
+                            <div id="salt-clicks-counter" class="tally-count">0 / 10</div>
+                            <div class="salt-meter-track">
+                                <div id="salt-progress-bar" class="salt-meter-fill"></div>
+                            </div>
+                            <div id="salt-status-text" class="salt-notice">Awaiting symbolic salt tribute to unlock final sanction.</div>
+                        </div>
+
+                        <div class="salt-actions">
+                            <button type="button" id="salt-proceed-btn" class="bureau-btn primary-btn hidden">
+                                CLAIM FINAL SANCTION →
+                            </button>
+                            <button type="button" id="salt-bypass-btn" class="bureau-btn bypass-btn">
+                                🧶 Bribe committee with handspun khadi (Skip Salt Tax)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 6: Final Sanction Certificate -->
+        <section id="stage-6" class="stage-panel hidden">
+            <div id="confetti-container" class="confetti-container"></div>
+            <div class="certificate-wrapper">
+                <div class="certificate-border-outer">
+                    <div class="certificate-border-inner">
+                        <div class="cert-header">
+                            <div class="cert-emblem">🏛️</div>
+                            <h3>DEPARTMENT OF CHRONOLOGICAL INDEPENDENCE</h3>
+                            <h4>OFFICIAL CHRONOLOGICAL SANCTION CERTIFICATE</h4>
+                            <p class="cert-subtitle">Approved by the Committee of Slightly Patient Users.</p>
+                        </div>
+
+                        <div class="cert-body">
+                            <p class="cert-text-lead">This document confirms that the bearer has heroically withstood the complete administrative machinery of red tape, satyagraha non-cooperation, and salt customs to officially secure:</p>
+                            
+                            <div class="cert-date-banner">
+                                <span class="cert-badge">SANCTIONED DATE</span>
+                                <h1 id="cert-selected-date" class="cert-date-title">15 August 1947</h1>
+                                <div id="cert-special-notice" class="cert-easter-notice hidden"></div>
+                            </div>
+
+                            <div class="cert-metadata-grid">
+                                <div class="cert-meta-item">
+                                    <span class="meta-label">APPLICATION NO:</span>
+                                    <strong id="cert-application-no">SWRJ-1947-0815-4291</strong>
+                                </div>
+                                <div class="cert-meta-item">
+                                    <span class="meta-label">CHARKHA REVOLUTIONS:</span>
+                                    <strong id="cert-charkha-spins">3</strong>
+                                </div>
+                                <div class="cert-meta-item">
+                                    <span class="meta-label">SALT TAX LEVIED:</span>
+                                    <strong id="cert-salt-tax">10 Units</strong>
+                                </div>
+                                <div class="cert-meta-item">
+                                    <span class="meta-label">APPROVAL STATUS:</span>
+                                    <strong class="status-approved">IRREVOCABLE FREEDOM</strong>
+                                </div>
+                            </div>
+
+                            <div class="cert-endorsement-row">
+                                <div class="official-rubber-seal">
+                                    <span class="seal-text-top">SWARAJ DATES</span>
+                                    <span class="seal-text-mid">SANCTIONED</span>
+                                    <span class="seal-text-bot">COMMISSIONER APPROVED</span>
+                                </div>
+                                <div class="signature-box">
+                                    <div class="fake-signature">M.K. Filewalla</div>
+                                    <span class="sign-title">Chief Registrar of Chronological Non-Violence</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cert-actions-row">
+                            <button type="button" id="print-cert-btn" class="bureau-btn primary-btn">
+                                🖨️ PRINT SANCTION CERTIFICATE
+                            </button>
+                            <button type="button" id="restart-app-btn" class="bureau-btn">
+                                🔄 APPLY FOR ANOTHER DATE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bureau-footer">
+        <p>Department of Chronological Independence • Gandhi Hackathon at IIT Bhilai</p>
+        <div class="footer-links">
+            <a href="#" id="easter-eggs-hint-link">Where are the Easter eggs?</a>
+            <span>•</span>
+            <button type="button" id="quit-india-btn" class="quit-link-btn">Quit India (Exit App)</button>
+        </div>
+    </footer>
+
+    <!-- Clue Modal: Easter Eggs Guide -->
+    <div id="easter-eggs-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <span class="modal-close" id="close-easter-modal">&times;</span>
+            <div class="modal-stamp">CLASSIFIED DISCLOSURE</div>
+            <h3>Chronological Easter Eggs of Swaraj</h3>
+            <p>The Department maintains secret historical records. Try discovering:</p>
+            <ul class="clues-list">
+                <li>🇮🇳 <strong>15 August 1947:</strong> The Tryst with Destiny.</li>
+                <li>📜 <strong>26 January:</strong> Republic Day protocol.</li>
+                <li>🧂 <strong>6 April 1930:</strong> Breaking the salt law.</li>
+                <li>🚶 <strong>12 March 1930:</strong> Dandi March departure.</li>
+                <li>🕊️ <strong>2 October:</strong> Gandhi Jayanti dry day.</li>
+                <li>🕯️ <strong>30 January:</strong> Martyrs' Day commemoration.</li>
+                <li>👓 <strong>The Spectacles:</strong> Inspect the header glasses 5 times.</li>
+                <li>⌨️ <strong>Typing Secret:</strong> Type <em>"bapu"</em> anywhere on your keyboard.</li>
+                <li>🎮 <strong>Konami Legacy:</strong> Up Up Down Down Left Right Left Right B A.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Quit India Screen Overlay -->
+    <div id="quit-india-overlay" class="quit-overlay hidden">
+        <div class="quit-card">
+            <div class="charkha-silhouette">⚙️</div>
+            <h2>This application has quit India.</h2>
+            <p>You have exercised absolute non-violent civil disobedience and halted chronological processing.</p>
+            <button type="button" id="quit-india-return" class="bureau-btn primary-btn">Return to Movement</button>
+        </div>
+    </div>
+
+    <!-- Scripts in strict order -->
+    <script src="js/copy.js"></script>
+    <script src="js/chaos.js"></script>
+    <script src="js/datepicker.js"></script>
+    <script src="js/flow.js"></script>
+</body>
+</html>
